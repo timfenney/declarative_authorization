@@ -520,6 +520,11 @@ module Authorization
         [:gte, block]
       end
 
+      # Ignore the attribute, the block is nil
+      def is_nil (&block)
+        [:is_nil, block]
+      end
+
       private
       def parse_attribute_conditions_hash! (hash)
         merge_hash = {}

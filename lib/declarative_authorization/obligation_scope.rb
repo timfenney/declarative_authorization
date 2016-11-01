@@ -279,6 +279,7 @@ module Authorization
                                    when :lte                       then "<= :#{bindvar}"
                                    when :gt                        then "> :#{bindvar}"
                                    when :gte                       then ">= :#{bindvar}"
+                                   when :is_nil                    then "= NULL OR :#{bindvar} IS NULL" # deliberately ignore the attribute value with '= NULL'
                                    else raise AuthorizationUsageError, "Unknown operator: #{operator}"
                                    end
               obligation_conds << "#{sql_attribute} #{attribute_operator}"

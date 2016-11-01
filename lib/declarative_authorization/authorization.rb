@@ -592,6 +592,8 @@ module Authorization
             attr_value && attr_value > evaluated
           when :gte
             attr_value && attr_value >= evaluated
+          when :is_nil
+            evaluated.nil?
           else
             raise AuthorizationError, "Unknown operator #{value[0]}"
           end
